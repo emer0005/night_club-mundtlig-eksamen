@@ -1,0 +1,73 @@
+@import url("react-h5-audio-player/lib/styles.css");
+
+.rhap_container {
+  background: transparent !important;
+  color: white !important;
+  font-family: inherit !important;
+}
+
+.rhap_progress-bar {
+  background-color: var(--color-surface-highlight-primary) !important;
+  height: 6px !important;
+}
+
+.rhap_progress-filled {
+  background-color: var(--color-surface-highlight-primary) !important;
+}
+
+.rhap_time {
+  color: white !important;
+}
+
+.rhap_button-clear {
+  color: white !important;
+  fill: white !important;
+}
+
+.rhap_main-controls-button {
+  color: white !important;
+  fill: white !important;
+}
+
+.rhap_volume-button {
+  color: white !important;
+  fill: white !important;
+}
+
+.rhap_skip-button {
+  color: white !important;
+  fill: white !important;
+}
+
+.rhap_main-controls-button svg,
+.rhap_volume-button svg,
+.rhap_skip-button svg {
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
+
+.rhap_download-progress {
+  background-color: var(--color-surface-highlight-primary) !important;
+}
+
+.rhap_buffer-bar {
+  background-color: var(--color-surface-highlight-primary) !important;
+  opacity: 0.4 !important;
+}
+
+.rhap_progress-indicator {
+  background-color: var(--color-surface-highlight-primary) !important;
+}
+
+.rhap_volume-bar {
+  background-color: var(--color-surface-highlight-primary) !important;
+}
+
+.rhap_volume-filled {
+  background-color: var(--color-surface-highlight-primary) !important;
+}
+
+.rhap_volume-indicator {
+  background-color: white !important;
+}

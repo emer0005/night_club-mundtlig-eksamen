@@ -1,0 +1,26 @@
+:root {
+  /* ==== Colors ==== */
+  --color-text-headline: oklch(100% 0 0);
+  --color-text-body: oklch(82.03% 0 0);
+  --color-surface-highlight-primary: oklch(65.35% 0.242 9.27);
+  --color-surface-highlight-secondary: oklch(53.17% 0.197 9.42);
+  --color-bg: oklch(0% 0 0);
+
+  /* ==== Spacing ==== */
+  --space-xs: clamp(0.625rem, 0.4716rem + 0.6818vw, 1rem);
+  --space-s: clamp(0.625rem, 0.4716rem + 0.6818vw, 1rem);
+  --space-m: clamp(0.9375rem, 0.7074rem + 1.0227vw, 1.5rem);
+  --space-l: clamp(1.25rem, 0.9432rem + 1.3636vw, 2rem);
+  --space-xl: clamp(1.875rem, 1.4148rem + 2.0455vw, 3rem);
+
+  /* ==== Typography ==== */
+  --step--2: clamp(0.4rem, 0.3018rem + 0.4364vw, 0.64rem);
+  --step--1: clamp(0.5rem, 0.3773rem + 0.5455vw, 0.8rem);
+  --step-0: clamp(0.625rem, 0.4716rem + 0.6818vw, 1rem);
+  --step-1: clamp(1.2rem, 1rem + 0.6vw, 1.3rem);
+
+  --step-2: clamp(0.9766rem, 0.7369rem + 1.0653vw, 1.5625rem);
+  --step-3: clamp(1.2207rem, 0.9211rem + 1.3317vw, 1.9531rem);
+  --step-4: clamp(1.5259rem, 1.1513rem + 1.6646vw, 2.4414rem);
+  --step-5: clamp(1.9073rem, 1.4392rem + 2.0807vw, 3.0518rem);
+}
