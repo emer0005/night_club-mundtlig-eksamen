@@ -461,6 +461,10 @@ li.active [data-split].is-leaving span {
   animation: letterDown 0.3s ease forwards;
 }
 
+[data-split] {
+  white-space: pre;
+}
+
 @keyframes letterDown {
   0% {
     transform: translateY(0);

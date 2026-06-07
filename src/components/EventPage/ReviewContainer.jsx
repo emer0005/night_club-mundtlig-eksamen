@@ -2,11 +2,10 @@ import Review from "./Review";
 import { Suspense } from "react";
 import Image from "next/image";
 
-
 const ReviewContainer = () => {
   return (
-    <section className="max-w-[80rem] mx-auto px-6 py-12 xl:p-0 border border-white mb-[7rem]">
-      <div className="p-5">
+    <section className="max-w-[80rem] mx-auto md:p-0 w-full p-10  mb-[var(--space-xl)]">
+      <div className="p-[var(--space-xs)] border border-white">
         <h2>Comments</h2>
         <Suspense
           fallback={
@@ -25,7 +24,9 @@ const ReviewContainer = () => {
 
 const FetchReview = async () => {
   "use server";
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments`, {
+    cache: "no-store",
+  });
   const reviews = await response.json();
 
   return reviews.map((review) => {
