@@ -6,7 +6,7 @@ import PrimaryBtn from "../GlobalComponents/PrimaryBtn";
 
 const EventDetailCard = ({ id, event }) => {
   return (
-    <section className="text-white px-6 py-12 xl:p-0 space-y-12 max-w-[80rem] mx-auto">
+    <section className="text-white px-6 py-12 xl:p-0 space-y-12 max-w-[80rem] mx-auto w-full">
       <div className="w-full overflow-hidden">
         <Image src={`${process.env.NEXT_PUBLIC_API_URL}${event.heroAsset.url}`} alt={event.title} width={event.heroAsset.width} height={event.heroAsset.height} className="w-full h-auto object-cover" />
       </div>

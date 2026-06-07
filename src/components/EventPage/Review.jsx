@@ -4,11 +4,11 @@ import { eventDate } from "@/app/dateConverter";
 const Review = ({ name, date, content }) => {
   return (
     <section className="">
-      <h5 className=" mt-[var(--space-l)]">
+      <h6 className=" mt-[var(--space-l)] mb-[var(--space-s)] text-[var(--color-text-headline)] text-xl">
         {name}
         <span className="text-[var(--color-surface-highlight-primary)]"> - Posted {eventDate(date)}</span>
-      </h5>
-      <p className="mb-[var(--space-xs)] max-w-[65ch]">{content}</p>
+      </h6>
+      <p className="mb-[var(--space-xs)] max-w-[65ch] text-s text-[var(--color-text-body)]  ">{content}</p>
     </section>
   );
 };

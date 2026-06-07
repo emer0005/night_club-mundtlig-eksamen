@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import PrimaryBtn from "../GlobalComponents/PrimaryBtn";
 import { eventDate } from "@/app/dateConverter";
 import { useState } from "react";
@@ -21,6 +21,7 @@ const BookTable = ({ events, setTakenTables, tables }) => {
   const [availableTables, setAvailableTables] = useState([]);
   const params = useSearchParams();
   const eventId = params.get("eventId");
+  const router = useRouter();
 
   const filteredAvailableTables = availableTables.filter((id) => {
     if (numberOfGuest === "") return true;
@@ -80,9 +81,12 @@ const BookTable = ({ events, setTakenTables, tables }) => {
         eventId: 1,
       }),
     });
-    await handleEventChange(data.eventNight);
+
+    await handleEventChange(eventNightValue);
 
     reset();
+    setTakenTables([]);
+    router.refresh();
   };
 
   return (

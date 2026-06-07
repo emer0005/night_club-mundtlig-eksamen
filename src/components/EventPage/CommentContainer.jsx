@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import PrimaryBtn from "../GlobalComponents/PrimaryBtn";
 
 const commentSchema = z.object({
@@ -13,6 +13,7 @@ const commentSchema = z.object({
 
 const CommentContainer = () => {
   const params = useParams();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -39,9 +40,11 @@ const CommentContainer = () => {
     });
 
     reset();
+    router.refresh();
   };
   return (
-    <section className="max-w-[80rem] mx-auto p-10 xl:p-0">
+    <section className="max-w-[80rem] mx-auto w-full p-10 xl:p-0">
+      <h2 className="mb-[var(--space-l)]">Leave a comment</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div>
