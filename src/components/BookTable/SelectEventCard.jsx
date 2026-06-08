@@ -1,23 +1,22 @@
 "use client";
 import Image from "next/image";
-import {useRouter} from "next/navigation"
+import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { eventDate } from "@/app/dateConverter";
 
-
 const SelectEventCard = ({ name, date, location, img, id }) => {
-    const router = useRouter();
-    const params = useSearchParams();
-    const guest = params.get("guests");
-    
-function handleEventSelection(id) {
-router.push(`/BookTable/SelectTable?guests=${guest}&event=${id}`);
-}
+  const router = useRouter();
+  const params = useSearchParams();
+  const guest = params.get("guests");
+
+  function handleEventSelection(id) {
+    router.push(`/BookTable/SelectTable?guests=${guest}&event=${id}`);
+  }
   return (
-    <div className="flex flex-row items-center gap-4 cursor-pointer mb-[2rem]" onClick={() => handleEventSelection(id)}>
-      <Image src={`${process.env.NEXT_PUBLIC_API_URL}${img}`} alt="Guest" width={200} height={200} />
+    <div className="flex flex-row items-center gap-4 cursor-pointer border mb-4 border-[var(--color-surface-highlight-primary)] p-2 hover:bg-[color-mix(in_srgb,var(--color-surface-highlight-primary)_20%,transparent)] transition-all duration-200" onClick={() => handleEventSelection(id)}>
+      <Image src={`${process.env.NEXT_PUBLIC_API_URL}${img}`} alt="Guest" width={100} height={100} />
       <div>
-        <h5  className="text-white">{name}</h5>
+        <h5 className="text-white">{name}</h5>
         <span className="text-white">{eventDate(date)}</span>
         <span className="text-[var(--color-surface-highlight-primary)]">{location}</span>
       </div>
