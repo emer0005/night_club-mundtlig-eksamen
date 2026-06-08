@@ -2,13 +2,17 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const FormBar = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const params = useSearchParams();
+  console.log(pathname);
   const guest = params.get("guests");
   const event = params.get("event");
   const table = params.get("table");
+  const information = params.get("information");
 
   function handleFormbar(step) {
     if (step === 1) {
@@ -26,12 +30,27 @@ const FormBar = () => {
   }
 
   return (
-    <div className="flex gap-12 mb-[3rem]">
-      <Image src="/assets/icon/user.svg" alt="User" width={40} height={40} className="cursor-pointer" onClick={() => handleFormbar(1)} />
-      <Image src="/assets/icon/Calendar.svg" alt="Calendar" width={40} height={40} className="cursor-pointer" onClick={() => handleFormbar(2)} />
-      <Image src="/assets/icon/Table.svg" alt="Table" width={40} height={40} className="cursor-pointer" onClick={() => handleFormbar(3)} />
-      <Image src="/assets/icon/Information.svg" alt="Info" width={40} height={40} className="cursor-pointer" onClick={() => handleFormbar(4)} />
-      <Image src="/assets/icon/Event_Accepted.svg" alt="Confirm" width={40} height={40} className="cursor-pointer" />
+    <div className="flex gap-8 mb-[3rem]">
+      <div className="flex flex-col items-center">
+        <Image src="/assets/icon/user.svg" alt="User" width={40} height={40} onClick={() => handleFormbar(1)} className={`cursor-pointer ${!guest && "opacity-50"}`} />
+        <span className={`text-[0.8rem] ${guest ? "text-white" : "text-gray-500"}`}>{guest ? `${guest} guests` : "Select guests"}</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <Image src="/assets/icon/Calendar.svg" alt="Calendar" width={40} height={40} className={`cursor-pointer ${!event && "opacity-50"}`} onClick={() => handleFormbar(2)} />
+        <span className={`text-[0.8rem] ${event ? "text-white" : "text-gray-500"}`}>{event ? `Event #${event}` : "Select event"}</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <Image src="/assets/icon/Table.svg" alt="Table" width={40} height={40} className={`cursor-pointer ${!table && "opacity-50"}`} onClick={() => handleFormbar(3)} />
+        <span className={`text-[0.8rem] ${table ? "text-white" : "text-gray-500"}`}>{table ? `Table #${table}` : "Select table"}</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <Image src="/assets/icon/Information.svg" alt="Info" width={40} height={40} className={`cursor-pointer ${!information && "opacity-50"}`} onClick={() => handleFormbar(4)} />
+        <span className={`text-[0.8rem] ${information ? "text-white" : "text-gray-500"}`}>{information ? "Details added" : "Enter details"}</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <Image src="/assets/icon/Event_Accepted.svg" alt="Confirm" width={40} height={40} className={`cursor-pointer ${pathname != "/BookTable/Confirm" && "opacity-50"}`} />
+        <span className={`text-[0.8rem] ${pathname === "/BookTable/Confirm" ? "text-white" : "text-gray-500"}`}>{pathname === "/BookTable/Confirm" ? "Completed" : "Confirm"}</span>
+      </div>
     </div>
   );
 };

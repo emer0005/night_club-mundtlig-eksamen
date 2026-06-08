@@ -49,7 +49,7 @@ const Informations = () => {
       }),
     });
 
-    router.push(`/BookTable/Confirm?guests=${guests}&event=${event}&table=${table}`);
+    router.push(`/BookTable/Confirm?guests=${guests}&event=${event}&table=${table}&information=true`);
     reset();
   };
 
