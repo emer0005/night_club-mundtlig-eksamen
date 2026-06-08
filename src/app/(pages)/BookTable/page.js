@@ -1,7 +1,5 @@
 import Header from "@/components/GlobalComponents/Header";
-import Subhero from "@/components/GlobalComponents/Subhero";
-import BookTableContainer from "@/components/BookTable/BookTableContainer";
-import Footer from "@/components/GlobalComponents/Footer/Footer";
+import Guest from "@/components/BookTable/Guest";
 
 export default async function BookTablePage() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`);
@@ -9,9 +7,7 @@ export default async function BookTablePage() {
   return (
     <>
       <Header />
-      <Subhero title="Book table" />
-      <BookTableContainer events={events} />
-      <Footer />
+      <Guest />
     </>
   );
 }
