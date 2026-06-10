@@ -1,8 +1,15 @@
+"use client";
 import Image from "next/image";
 import SelectEventCard from "./SelectEventCard";
-import FormBar from "./FormBar";
+import { tables } from "@/app/data/tables";
 
-const SelectEvent = () => {
+import FormBar from "./FormBar";
+import { useSearchParams } from "next/navigation";
+
+const SelectEvent = ({ reservations, events }) => {
+  const params = useSearchParams();
+  const guest = params.get("guests");
+
   return (
     <div className="p-7 md:p-0 grid grid-cols-1 lg:grid-cols-2 gap-15 mx-auto max-w-[1200px] min-h-[calc(100vh-80px)] place-content-center items-start">
       <div className="hidden lg:flex justify-center">
@@ -20,7 +27,11 @@ const SelectEvent = () => {
         </div>
 
         <div className="h-[350px] overflow-y-scroll custom-scrollbar pr-4">
-          <FetchSelectEvent />
+          <>
+            {events.map((event) => (
+              <SelectEventCard key={event.id} name={event.title} date={event.date} location={event.location} img={event.asset.url} id={event.id} reservations={reservations} />
+            ))}
+          </>
         </div>
       </div>
     </div>
@@ -28,17 +39,3 @@ const SelectEvent = () => {
 };
 
 export default SelectEvent;
-
-const FetchSelectEvent = async () => {
-  "use server";
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`);
-  const events = await response.json();
-
-  return (
-    <>
-      {events.map((event) => (
-        <SelectEventCard key={event.id} name={event.title} date={event.date} location={event.location} img={event.asset.url} id={event.id} />
-      ))}
-    </>
-  );
-};

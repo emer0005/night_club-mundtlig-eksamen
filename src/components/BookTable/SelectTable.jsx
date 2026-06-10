@@ -1,33 +1,25 @@
 "use client";
-
 import Image from "next/image";
 import FormBar from "./FormBar";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { tables } from "@/app/data/tables";
 
-const tables = [
-  { id: 1, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 2, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 3, guest: 6, img: "/assets/icon/table2.svg" },
-  { id: 4, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 5, guest: 8, img: "/assets/icon/table3.svg" },
-  { id: 6, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 7, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 8, guest: 6, img: "/assets/icon/table2.svg" },
-  { id: 9, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 10, guest: 8, img: "/assets/icon/table3.svg" },
-  { id: 11, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 12, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 13, guest: 6, img: "/assets/icon/table2.svg" },
-  { id: 14, guest: 4, img: "/assets/icon/table1.svg" },
-  { id: 15, guest: 8, img: "/assets/icon/table3.svg" },
-];
-
-const SelectTable = () => {
+const SelectTable = ({ reservations }) => {
   const router = useRouter();
   const params = useSearchParams();
   const guest = params.get("guests");
   const event = params.get("event");
+
+  const tablesGuest = tables.filter((table) => table.guest >= Number(guest));
+  const reservation = reservations.filter((res) => res.eventId === Number(event));
+
+  const reservedTableIds = reservation.map((res) => Number(res.table));
+
+  const availableTables = tablesGuest.filter((table) => !reservedTableIds.includes(table.id));
+  console.log(tablesGuest);
+  console.log(reservation);
+  console.log(availableTables);
 
   function handleTableSelection(id) {
     router.push(`/BookTable/Informations?guests=${guest}&event=${event}&table=${id}`);
@@ -49,7 +41,7 @@ const SelectTable = () => {
         </div>
 
         <div className="grid grid-cols-5 gap-x-6 gap-y-15">
-          {tables.map((table) => (
+          {availableTables.map((table) => (
             <div key={table.id} onClick={() => handleTableSelection(table.id)} className="cursor-pointer grid">
               <Image src={table.img} alt={`Table ${table.id}`} width={230} height={150} className="row-start-1 col-start-1 w-full h-full" />
               <span className="text-white row-start-1 col-start-1 place-self-center">{table.id}</span>
