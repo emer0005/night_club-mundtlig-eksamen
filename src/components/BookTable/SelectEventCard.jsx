@@ -9,6 +9,7 @@ const SelectEventCard = ({ name, date, location, img, id, reservations }) => {
   const router = useRouter();
   const params = useSearchParams();
   const guest = params.get("guests");
+  const event = params.get("event");
 
   console.log(id);
 
@@ -29,18 +30,14 @@ const SelectEventCard = ({ name, date, location, img, id, reservations }) => {
     router.push(`/BookTable/SelectTable?guests=${guest}&event=${id}`);
   }
   return (
-    <div
-      className={`
-      flex flex-row items-center gap-4 cursor-pointer border mb-4 p-2 transition-all duration-200
-      ${availableTables.length === 0 ? "bg-red-200 border-red-500 cursor-not-allowed" : "border-[var(--color-surface-highlight-primary)] hover:bg-[color-mix(in_srgb,var(--color-surface-highlight-primary)_20%,transparent)]"}
-    `}
-      onClick={() => handleEventSelection(id)}
-    >
-      <Image src={`${process.env.NEXT_PUBLIC_API_URL}${img}`} alt="Guest" width={100} height={100} />
-      <div>
-        <h5 className="text-white">{name}</h5>
-        <span className="text-white">{eventDate(date)}</span>
-        <span className="text-[var(--color-surface-highlight-primary)]">{location}</span>
+    <div className={`relative flex flex-row items-center gap-4 border mb-4 p-2 transition-all duration-200 border-[var(--color-surface-highlight-primary)] ${Number(event) === id ? "bg-[color-mix(in_srgb,var(--color-surface-highlight-primary)_20%,transparent)]" : ""} ${availableTables.length === 0 ? "" : "hover:bg-[color-mix(in_srgb,var(--color-surface-highlight-primary)_20%,transparent)] cursor-pointer"} `} onClick={availableTables.length === 0 ? undefined : () => handleEventSelection(id)}>
+      {availableTables.length === 0 && <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[1.2rem] uppercase font-bold">No Tables Available </span>}
+      <Image src={`${process.env.NEXT_PUBLIC_API_URL}${img}`} alt="Guest" width={100} height={100} className={`${availableTables.length === 0 ? "opacity-10" : ""}`} />
+      <div className={`${availableTables.length === 0 ? "opacity-10" : ""}`}>
+        <h6 className="text-white text-xl font-semibold uppercase">{name}</h6>
+        <span className="text-white">{eventDate(date)} </span>
+        <span className="text-[var(--color-text-body)]"> | </span>
+        <span className="text-[var(--color-surface-highlight-primary)]">{location} </span>
       </div>
     </div>
   );

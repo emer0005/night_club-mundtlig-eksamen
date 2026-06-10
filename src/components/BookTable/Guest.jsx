@@ -2,13 +2,19 @@
 
 import Image from "next/image";
 import FormBar from "./FormBar";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Guest = () => {
   const router = useRouter();
+  const params = useSearchParams();
+  const eventId = params.get("eventId");
 
   function handleGuestSelection(guests) {
-    router.push(`/BookTable/SelectEvent?guests=${guests}`);
+    if (eventId) {
+      router.push(`/BookTable/SelectEvent?guests=${guests}&event=${eventId}`);
+    } else {
+      router.push(`/BookTable/SelectEvent?guests=${guests}`);
+    }
   }
 
   return (
