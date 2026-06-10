@@ -22,7 +22,6 @@ const Informations = () => {
   const event = params.get("event");
   const table = params.get("table");
 
-
   const {
     register,
     handleSubmit,
@@ -32,7 +31,6 @@ const Informations = () => {
     resolver: zodResolver(bookTableSchema),
     mode: "onChange",
   });
-
 
   const onSubmit = async (data) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events/${event}`);
@@ -53,7 +51,7 @@ const Informations = () => {
         eventId: Number(event),
       }),
     });
-    router.push(`/BookTable/Confirm?&information=true`);
+    router.push(`/BookTable/Confirm?&guests=${guests}&event=${event}&table=${table}&information=true`);
     reset();
   };
 
@@ -91,7 +89,7 @@ const Informations = () => {
             </div>
 
             <div>
-              <textarea {...register("content")} rows={4} placeholder="Your comment" className="input" />
+              <textarea {...register("content")} rows={3} placeholder="Your comment" className="input" />
             </div>
 
             <div className="flex justify-end">
