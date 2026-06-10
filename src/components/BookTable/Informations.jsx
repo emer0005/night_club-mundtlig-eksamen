@@ -22,6 +22,7 @@ const Informations = () => {
   const event = params.get("event");
   const table = params.get("table");
 
+
   const {
     register,
     handleSubmit,
@@ -32,10 +33,14 @@ const Informations = () => {
     mode: "onChange",
   });
 
+
   const onSubmit = async (data) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events/${event}`);
+    const eventdate = await response.json();
+
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reservations`, {
+    await fetch("http://localhost:4000/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -43,24 +48,21 @@ const Informations = () => {
         email: data.email,
         table: table,
         guests: guests,
-        date: "2026-05-09T20:00:00+02:00",
+        date: eventdate.date,
         phone: data.phone,
-        eventId: event,
+        eventId: Number(event),
       }),
     });
-
-    router.push(`/BookTable/Confirm?guests=${guests}&event=${event}&table=${table}&information=true`);
+    router.push(`/BookTable/Confirm?&information=true`);
     reset();
   };
 
   return (
     <section className="p-7 md:p-0 grid grid-cols-1 lg:grid-cols-2 gap-15 min-h-[calc(100vh-80px)] place-content-center items-start mx-auto max-w-[1200px]">
-      {/* LEFT IMAGE */}
       <div className="hidden lg:flex justify-center">
         <Image src="/assets/content-img/thumb1.jpg" alt="Guest" width={450} height={450} />
       </div>
 
-      {/* RIGHT CONTENT */}
       <div className="flex flex-col w-[500px]">
         <div className="mx-auto">
           <FormBar />
