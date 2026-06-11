@@ -12,7 +12,7 @@ const Confirm = () => {
           <FormBar />
         </div>
 
-        <div className="mb-5 flex flex-col items-center text-center">
+        <div className="mb-5 flex flex-col items-center justify-center h-[400px] text-center">
           <h3>Thanks for your reservation. We are looking forward to greeting you!</h3>
           <div className="gradient_line h-[5px] w-[200px]"></div>
         </div>

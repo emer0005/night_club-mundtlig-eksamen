@@ -40,9 +40,9 @@ const SelectTable = ({ reservations }) => {
           <div className="gradient_line h-[5px] w-[200px] mx-auto mb-[var(--space-m)]"></div>
         </div>
 
-        <div className="grid grid-cols-5 gap-x-6 gap-y-15">
+        <div className="grid grid-cols-5 gap-x-6 gap-y-15 justify-center items-center mx-auto">
           {availableTables.map((table) => (
-            <div key={table.id} onClick={() => handleTableSelection(table.id)} className="cursor-pointer grid">
+            <div key={table.id} onClick={() => handleTableSelection(table.id)} className="cursor-pointer grid hover:scale-120 transition-transform">
               <Image src={table.img} alt={`Table ${table.id}`} width={230} height={150} className="row-start-1 col-start-1 w-full h-full" />
               <span className="text-white row-start-1 col-start-1 place-self-center">{table.id}</span>
             </div>
