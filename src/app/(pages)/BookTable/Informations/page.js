@@ -1,7 +1,7 @@
 import Header from "@/components/GlobalComponents/Header";
 import Informations from "@/components/BookTable/Informations";
 
-export default async function BookTablePage() {
+export default function InformationsPage() {
   return (
     <>
       <Header />

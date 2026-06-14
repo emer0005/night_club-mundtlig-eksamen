@@ -3,7 +3,7 @@
 import Image from "next/image";
 import FormBar from "./FormBar";
 import { useRouter, useSearchParams } from "next/navigation";
-import {tables} from "@/app/data/tables";
+import { tables } from "@/app/data/tables";
 
 const Guest = ({ reservations }) => {
   const router = useRouter();
@@ -18,21 +18,20 @@ const Guest = ({ reservations }) => {
     }
   }
 
+  const reservation = reservations.filter((res) => res.eventId === Number(eventId));
+  const tableID = reservation.map((res) => Number(res.table));
+  const availableTables = tables.filter((table) => !tableID.includes(table.id));
 
-    const reservation = reservations.filter((res) => res.eventId === Number(eventId));  
-    const tableID = reservation.map((res) => Number(res.table));
-    const availableTables = tables.filter((table) => !tableID.includes(table.id));
-  
-    function IsGuestAllowed(guests){
-      const isAllowed = availableTables.some((table) => table.guest >= guests);
-      return isAllowed;
-    }
+  function IsGuestAllowed(guests) {
+    const isAllowed = availableTables.some((table) => table.guest >= guests);
+    return isAllowed;
+  }
 
-    console.log(reservation);
-    console.log(eventId);
-    console.log(tableID);
-    console.log(availableTables);
-    console.log(IsGuestAllowed(4));
+  console.log(reservation);
+  console.log(eventId);
+  console.log(tableID);
+  console.log(availableTables);
+  console.log(IsGuestAllowed(4));
 
   return (
     <div className="p-7 md:p-0 grid grid-cols-1 lg:grid-cols-2 gap-15 min-h-[calc(100vh-80px)] place-content-center items-start mx-auto max-w-[1200px]">

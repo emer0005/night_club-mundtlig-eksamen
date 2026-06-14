@@ -1,15 +1,9 @@
 "use client";
 import Image from "next/image";
 import SelectEventCard from "./SelectEventCard";
-import { tables } from "@/app/data/tables";
-
 import FormBar from "./FormBar";
-import { useSearchParams } from "next/navigation";
 
 const SelectEvent = ({ reservations, events }) => {
-  const params = useSearchParams();
-  const guest = params.get("guests");
-
   return (
     <div className="p-7 md:p-0 grid grid-cols-1 lg:grid-cols-2 gap-15 mx-auto max-w-[1200px] min-h-[calc(100vh-80px)] place-content-center items-start">
       <div className="hidden lg:flex justify-center">

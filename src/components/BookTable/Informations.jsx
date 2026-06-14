@@ -38,7 +38,7 @@ const Informations = () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    await fetch("http://localhost:4000/reservations", {
+    const postReservation = await fetch("http://localhost:4000/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -51,7 +51,10 @@ const Informations = () => {
         eventId: Number(event),
       }),
     });
-    router.push(`/BookTable/Confirm?&guests=${guests}&event=${event}&table=${table}&information=true`);
+
+    if (postReservation.ok) {
+      router.push(`/BookTable/Confirm?&guests=${guests}&event=${event}&table=${table}&information=true`);
+    }
     reset();
   };
 

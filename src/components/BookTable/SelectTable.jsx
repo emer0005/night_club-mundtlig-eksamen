@@ -24,6 +24,7 @@ const SelectTable = ({ reservations }) => {
   function handleTableSelection(id) {
     router.push(`/BookTable/Informations?guests=${guest}&event=${event}&table=${id}`);
   }
+
   return (
     <div className=" p-7 md:p-0 grid grid-cols-1 lg:grid-cols-2 gap-15 min-h-[calc(100vh-80px)] place-content-center items-start mx-auto max-w-[1200px]">
       <div className="hidden lg:flex justify-center">

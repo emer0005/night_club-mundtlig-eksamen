@@ -1,7 +1,7 @@
 import Header from "@/components/GlobalComponents/Header";
 import SelectEvent from "@/components/BookTable/SelectEvent";
 
-export default async function BookTablePage() {
+export default async function SelectEventPage() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`);
   const events = await response.json();
 
