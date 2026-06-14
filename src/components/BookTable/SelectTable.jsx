@@ -17,6 +17,7 @@ const SelectTable = ({ reservations }) => {
   const reservedTableIds = eventReservations.map((res) => Number(res.table));
 
   const availableTables = tablesMatchingGuest.filter((table) => !reservedTableIds.includes(table.id));
+  
   console.log(tablesMatchingGuest);
   console.log(eventReservations);
   console.log(availableTables);

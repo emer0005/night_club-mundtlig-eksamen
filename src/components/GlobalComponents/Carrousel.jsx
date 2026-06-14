@@ -24,14 +24,12 @@ export default function Carousel({ children, slidesToShow = 1, variant = "defaul
   if (!autoSize) return;
 
   const windowSize = () => {
-    // Kun scrollContainer skal være 1 → 5
     if (variant === "scrollContainer") {
       if (window.innerWidth < 900) setNumberOfSlides(1);
       else setNumberOfSlides(slidesToShow); // desktop = 5
       return;
     }
 
-    // Alle andre varianter bruger din normale logik
     if (window.innerWidth < 900) setNumberOfSlides(1);
     else setNumberOfSlides(2);
   };
