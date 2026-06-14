@@ -11,14 +11,14 @@ const SelectTable = ({ reservations }) => {
   const guest = params.get("guests");
   const event = params.get("event");
 
-  const tablesGuest = tables.filter((table) => table.guest >= Number(guest));
-  const reservation = reservations.filter((res) => res.eventId === Number(event));
+  const tablesMatchingGuest = tables.filter((table) => table.guest >= Number(guest));
+  const eventReservations = reservations.filter((res) => res.eventId === Number(event));
 
-  const reservedTableIds = reservation.map((res) => Number(res.table));
+  const reservedTableIds = eventReservations.map((res) => Number(res.table));
 
-  const availableTables = tablesGuest.filter((table) => !reservedTableIds.includes(table.id));
-  console.log(tablesGuest);
-  console.log(reservation);
+  const availableTables = tablesMatchingGuest.filter((table) => !reservedTableIds.includes(table.id));
+  console.log(tablesMatchingGuest);
+  console.log(eventReservations);
   console.log(availableTables);
 
   function handleTableSelection(id) {
