@@ -121,8 +121,14 @@ nav {
       left: 37.5px;
       bottom: 0px;
       width: 100px;
-      background: radial-gradient(var(--color-surface-highlight-primary) 0%, transparent 90%);
-      background: radial-gradient(var(--color-surface-highlight-primary) 0%, transparent 90%);
+      background: radial-gradient(
+        var(--color-surface-highlight-primary) 0%,
+        transparent 90%
+      );
+      background: radial-gradient(
+        var(--color-surface-highlight-primary) 0%,
+        transparent 90%
+      );
       transition: 0.3s;
     }
 
@@ -212,7 +218,10 @@ nav {
 }
 
 .gradient_line {
-  background: radial-gradient(var(--color-surface-highlight-primary) 0%, transparent 90%);
+  background: radial-gradient(
+    var(--color-surface-highlight-primary) 0%,
+    transparent 90%
+  );
 }
 
 /* ==== Form styling ==== */
@@ -282,14 +291,32 @@ input.news_input {
 }
 
 .hero_btn_2 {
-  transition: --offset1 0.5s ease-out, border-image-source 0.4s ease-out;
-  background: linear-gradient(to top right, #b822b5 var(--offset1), var(--color-surface-highlight-primary) 80%);
-  border-image: linear-gradient(to top right, #b822b5 0%, var(--color-surface-highlight-primary) 60%, #ffffff 100%) 1;
+  transition:
+    --offset1 0.5s ease-out,
+    border-image-source 0.4s ease-out;
+  background: linear-gradient(
+    to top right,
+    #b822b5 var(--offset1),
+    var(--color-surface-highlight-primary) 80%
+  );
+  border-image: linear-gradient(
+      to top right,
+      #b822b5 0%,
+      var(--color-surface-highlight-primary) 60%,
+      #ffffff 100%
+    )
+    1;
 }
 
 .hero_btn_2:hover {
   --offset1: 100%;
-  border-image: linear-gradient(to top right, #b822b5 0%, #b822b5 80%, #ffffff 100%) 1;
+  border-image: linear-gradient(
+      to top right,
+      #b822b5 0%,
+      #b822b5 80%,
+      #ffffff 100%
+    )
+    1;
 }
 @property --offset2 {
   syntax: "<percentage>";
@@ -304,18 +331,31 @@ input.news_input {
 
 .hero_btn_1:hover {
   --offset2: 100%;
-  background: linear-gradient(to top right, transparent 0%, var(--color-text-body) var(--offset2));
+  background: linear-gradient(
+    to top right,
+    transparent 0%,
+    var(--color-text-body) var(--offset2)
+  );
 }
 
 .form_button {
   --offset2: 0%;
   transition: all 1s ease-out;
-  border-image: linear-gradient(to top right, var(--color-surface-highlight-primary) 0%, var(--color-surface-highlight-primary) 100%) 1;
+  border-image: linear-gradient(
+      to top right,
+      var(--color-surface-highlight-primary) 0%,
+      var(--color-surface-highlight-primary) 100%
+    )
+    1;
 }
 
 .form_button:hover {
   --offset2: 100%;
-  background: linear-gradient(to top right, transparent 0%, var(--color-surface-highlight-primary) var(--offset2));
+  background: linear-gradient(
+    to top right,
+    transparent 0%,
+    var(--color-surface-highlight-primary) var(--offset2)
+  );
 }
 
 .filter_knap {
@@ -327,21 +367,24 @@ input.news_input {
 }
 
 .filter_knap--active {
-  background: linear-gradient(to top right, transparent 0%, var(--color-text-body) 100%);
+  background: linear-gradient(
+    to top right,
+    transparent 0%,
+    var(--color-text-body) 100%
+  );
 }
 
 /* ==== Gallery popover ==== */
 
 .galleryPopover {
   background-color: transparent;
-  width: 1100px;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .galleryPopover::backdrop {
   background-color: #00000090;
-  width: 500vh;
-  height: 100vh;
 }
 
 .slideWrapper {
@@ -350,7 +393,7 @@ input.news_input {
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem 1rem;
-  max-width: 800px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -612,7 +655,13 @@ li.active [data-split].is-leaving span {
 }
 
 .isTakenTabel {
-  background-image: repeating-linear-gradient(45deg, var(--color-surface-highlight-primary) 10px, var(--color-surface-highlight-primary) 12px, transparent 12px, transparent 20px);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-surface-highlight-primary) 10px,
+    var(--color-surface-highlight-primary) 12px,
+    transparent 12px,
+    transparent 20px
+  );
 }
 
 /* Scrollbar styling */
@@ -631,5 +680,9 @@ li.active [data-split].is-leaving span {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--color-surface-highlight-primary) 70%, black);
+  background: color-mix(
+    in srgb,
+    var(--color-surface-highlight-primary) 70%,
+    black
+  );
 }
